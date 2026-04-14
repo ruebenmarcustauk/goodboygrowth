@@ -73,69 +73,39 @@ h1 em{font-style:italic;color:var(--amber)}
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 0; /* seamless tiles */
-  border-top: 1px solid var(--border);
+  gap: 2px;
+  background: var(--border);
 }
 
-/* CARD */
 .svc-card {
   background: var(--cream);
-  padding: 40px 32px;
+  padding: 36px 28px;
   position: relative;
-  overflow: hidden;
-  transition: all 0.35s ease;
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  transition: all 0.3s ease;
 }
 
-/* REMOVE RIGHT BORDER ON LAST COLUMN */
-.svc-card:nth-child(5n) {
-  border-right: none;
-}
-
-/* HOVER = PREMIUM */
 .svc-card:hover {
   background: #fff;
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+  transform: translateY(-4px);
 }
 
-/* SUBTLE GLOW ACCENT */
-.svc-card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top left, rgba(255,255,255,0.4), transparent 60%);
-  opacity: 0;
-  transition: opacity 0.4s ease;
-}
-
-.svc-card:hover::after {
-  opacity: 1;
-}
-
-/* NUMBER */
-.svc-ghost-num {
-  font-family: 'DM Serif Display', serif;
-  font-size: 72px;
-  color: rgba(26, 23, 18, .035);
-  position: absolute;
-  top: 12px;
-  right: 18px;
-  pointer-events: none;
-}
-
-/* ICON */
 .svc-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
   background: var(--amber-light);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-  transition: transform 0.3s ease;
+  margin-bottom: 18px;
+}
+
+.svc-icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--amber);
+  fill: none;
+  stroke-width: 1.8;
 }
 
 .svc-card:hover .svc-icon {
