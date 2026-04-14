@@ -64,22 +64,24 @@ h1 em{font-style:italic;color:var(--amber)}
 .sec-sub{font-size:16px;color:var(--text-muted);font-weight:300;line-height:1.8;max-width:540px;margin-bottom:48px}
 
 /* SERVICES */
-.services-outer { 
-  background: var(--warm); 
-  position: relative; 
-  overflow: hidden; 
+.services-outer {
+  background: var(--warm);
 }
 
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2px;
-  background: var(--border);
+.services-row {
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--border);
 }
 
+/* CARD */
 .svc-card {
+  flex: 1 1 20%; /* 5 across */
+  min-width: 260px; /* prevents squishing */
   background: var(--cream);
   padding: 36px 28px;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
   position: relative;
   transition: all 0.3s ease;
 }
@@ -89,6 +91,12 @@ h1 em{font-style:italic;color:var(--amber)}
   transform: translateY(-4px);
 }
 
+/* REMOVE RIGHT BORDER ON LAST ITEM IN ROW */
+.svc-card:nth-child(5n) {
+  border-right: none;
+}
+
+/* ICON */
 .svc-icon {
   width: 40px;
   height: 40px;
@@ -108,31 +116,22 @@ h1 em{font-style:italic;color:var(--amber)}
   stroke-width: 1.8;
 }
 
-.svc-card:hover .svc-icon {
-  transform: scale(1.1);
-}
-
 /* TEXT */
-.svc-title { 
-  font-size: 15px; 
-  font-weight: 500; 
-  color: var(--dark); 
-  margin-bottom: 10px; 
+.svc-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
 }
 
-.svc-desc { 
-  font-size: 13px; 
-  color: var(--text-muted); 
-  line-height: 1.7; 
+.svc-desc {
+  font-size: 13px;
+  line-height: 1.7;
 }
 
 /* MOBILE */
 @media (max-width: 767px) {
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
-
   .svc-card {
+    flex: 1 1 100%;
     border-right: none;
   }
 }
@@ -399,49 +398,77 @@ footer{display:flex;justify-content:space-between;align-items:center;padding:28p
     <p class="sec-sub">Five agencies running simultaneously, in person, in your city — that's the key insight. Piecemeal doesn't fill clinics. Everything at once, at full intensity, does.</p>
   </div>
   <!-- ROW 1: 3 cards -->
-  <div class="services-grid">
+  <div class="services-outer">
+  <div class="services-row">
 
-  <!-- 01 -->
-  <div class="svc-card">
-    <div class="svc-ghost-num">01</div>
-    <div class="svc-icon">...</div>
-    <div class="svc-title">Partnership development</div>
-    <p class="svc-desc">We go in person and close the deals ourselves — HR teams, vets, coffee shops, pet shops, hotels, residential buildings.</p>
+    <!-- 01 -->
+    <div class="svc-card">
+      <div class="svc-ghost-num">01</div>
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+      </div>
+      <div class="svc-title">Partnership development</div>
+      <p class="svc-desc">We go in person and close the deals ourselves — HR teams, vets, coffee shops, pet shops, hotels, residential buildings.</p>
+    </div>
+
+    <!-- 02 -->
+    <div class="svc-card">
+      <div class="svc-ghost-num">02</div>
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+      </div>
+      <div class="svc-title">Email campaigns</div>
+      <p class="svc-desc">Full outreach sequences — written, built, deployed, and handed to you to own forever. B2B and client retention flows.</p>
+    </div>
+
+    <!-- 03 -->
+    <div class="svc-card">
+      <div class="svc-ghost-num">03</div>
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+      </div>
+      <div class="svc-title">Social media management</div>
+      <p class="svc-desc">Daily posting, community growth, and platform management. We run your accounts so you focus on what you do best.</p>
+    </div>
+
+    <!-- 04 -->
+    <div class="svc-card">
+      <div class="svc-ghost-num">04</div>
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24">
+          <polygon points="23 7 16 12 23 17 23 7"/>
+          <rect x="1" y="5" width="15" height="14" rx="2"/>
+        </svg>
+      </div>
+      <div class="svc-title">Video &amp; content production</div>
+      <p class="svc-desc">Grooming transformations, brand films, short-form video — filmed at your clinic, edited, and posted for you.</p>
+    </div>
+
+    <!-- 05 -->
+    <div class="svc-card">
+      <div class="svc-ghost-num">05</div>
+      <div class="svc-icon">
+        <svg viewBox="0 0 24 24">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+        </svg>
+      </div>
+      <div class="svc-title">Influencer partnerships</div>
+      <p class="svc-desc">We find and close local dog creators and community accounts — revenue share and free services in exchange for reach.</p>
+    </div>
+
   </div>
-
-  <!-- 02 -->
-  <div class="svc-card">
-    <div class="svc-ghost-num">02</div>
-    <div class="svc-icon">...</div>
-    <div class="svc-title">Email campaigns</div>
-    <p class="svc-desc">Full outreach sequences — written, built, deployed, and handed to you to own forever. B2B and client retention flows.</p>
-  </div>
-
-  <!-- 03 -->
-  <div class="svc-card">
-    <div class="svc-ghost-num">03</div>
-    <div class="svc-icon">...</div>
-    <div class="svc-title">Social media management</div>
-    <p class="svc-desc">Daily posting, community growth, and platform management.</p>
-  </div>
-
-  <!-- 04 -->
-  <div class="svc-card">
-    <div class="svc-ghost-num">04</div>
-    <div class="svc-icon">...</div>
-    <div class="svc-title">Video & content production</div>
-    <p class="svc-desc">Grooming transformations, brand films, short-form video.</p>
-  </div>
-
-  <!-- 05 -->
-  <div class="svc-card">
-    <div class="svc-ghost-num">05</div>
-    <div class="svc-icon">...</div>
-    <div class="svc-title">Influencer partnerships</div>
-    <p class="svc-desc">We find and close local dog creators and community accounts.</p>
-  </div>
-
-</div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════
